@@ -1,0 +1,28 @@
+services:
+  web:
+    container_name: template
+    image: template
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:7000
+    volumes:
+      - ./images:/images
+    depends_on:
+      - db
+    env_file: .env
+    networks:
+      - template-network
+  db:
+    container_name: postgres_db
+    image: postgres
+    ports:
+      - 5432:5432
+    env_file: .sql.env
+    networks:
+      - template-network
+
+networks:
+  template-network:
+    external: true
