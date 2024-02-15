@@ -2,7 +2,7 @@ import { DataSource } from "typeorm";
 import { join } from "path";
 const datasource = new DataSource({
   type: "postgres",
-  host: process.env.HOST,
+  host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
   username: process.env.USER,
   password: process.env.PASSWORD,

@@ -8,7 +8,6 @@ export const errorHandler = (
   next: NextFunction
 ) => {
   console.log("XXXXXX Inside error handler");
-  console.log(err);
   if (err.isOperational) {
     return res.status(err.status).json({
       message: err.message,

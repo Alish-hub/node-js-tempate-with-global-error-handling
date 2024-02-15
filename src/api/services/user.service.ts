@@ -1,3 +1,4 @@
+import { logger } from "../../configs/logger";
 import AppError from "../../utils/appError";
 import { User } from "../entities/user.entity";
 
@@ -11,7 +12,8 @@ export const checkUserExist = async (email: string) => {
         400,
         "User with this email already exist, Please login to proceed"
       );
-  } catch (err) {
+  } catch (err: any) {
+    logger.error(err.message);
     throw err;
   }
 };
