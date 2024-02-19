@@ -9,14 +9,6 @@ export const registration = async (
   next: NextFunction
 ) => {
   try {
-    // const isEmailExist = await User.findOne({
-    //   where: { email: req.body?.email },
-    // });
-    // if (isEmailExist)
-    //   throw new AppError(
-    //     400,
-    //     "User with this email already exist, Please login to proceed"
-    //   );
     await checkUserExist(req.body?.email);
     const newUser = User.create({
       name: req.body?.name,

@@ -4,18 +4,19 @@ import dotenv from "dotenv";
 dotenv.config();
 const PORT = process.env.PORT || 7000;
 let server: any;
-
 (async () => {
   try {
     server = app.listen(PORT, async () => {
       console.log(`[SERVER]🆙 Server is running on http://localhost:${PORT}`);
     });
+
     await datasource.initialize();
     console.log(`[DATABASE]🆙 Database connected!`);
     server.on("close", () => {
       console.log("Server closed");
     });
   } catch (error) {
+    throw error;
     console.log({ error });
   }
 })();
